@@ -9,6 +9,7 @@ class SignIn extends Component {
     signInOptions: [
       this.props.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       this.props.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      this.props.firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
       signInSuccessWithAuthResult: () => false,
@@ -17,7 +18,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div>
+      <div className="SignIn_layout">
         <StyledFirebaseAuth
           uiConfig={this.uiConfig}
           firebaseAuth={this.props.auth}

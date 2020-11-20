@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import profileImage from "./img/picture.png";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
+import NavBar from "./components/NavBar";
 
 //firebase sdk
 import firebase from "firebase/app"; //import firebase sdk
@@ -34,18 +35,18 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
-      <h1>My React Page</h1>
-      <h2>Author: Eden Sharoni - 19/11/2020</h2>
-      <img src={profileImage} alt="Profile-image" />
-      <section>
-        {user ? (
-          <Home auth={auth} />
-        ) : (
-          <SignIn firebase={firebase} auth={auth} />
-        )}
-      </section>
-    </div>
+    <Router>
+      <NavBar auth={auth} />
+      <div className="page_layout">
+        <section>
+          {user ? (
+            <Home auth={auth} />
+          ) : (
+            <SignIn firebase={firebase} auth={auth} />
+          )}
+        </section>
+      </div>
+    </Router>
   );
 }
 

@@ -7,13 +7,6 @@ class Home extends Component {
     return (
       <div>
         <h1>You are signed in</h1>
-        <h2>Hello: {auth.currentUser.displayName}</h2>
-        {console.log(auth.currentUser.displayName)}
-        {auth.currentUser && (
-          <section>
-            <button onClick={() => auth.signOut()}>Sign Out</button>
-          </section>
-        )}
       </div>
     );
   }
