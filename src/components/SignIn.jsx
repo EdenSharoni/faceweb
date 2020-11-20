@@ -1,14 +1,30 @@
 import React, { Component } from "react";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 class SignIn extends Component {
-  render() {
-    return <button onClick={this.signInWithGoogle}>Sign in with google</button>;
-  }
-  signInWithGoogle = () => {
-    const provider = new this.props.firebase.auth.GoogleAuthProvider();
-    this.props.auth.signInWithPopup(provider);
+  state = { isSignedIn: false };
+
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      this.props.firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      this.props.firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    ],
+    callbacks: {
+      signInSuccessWithAuthResult: () => false,
+    },
   };
+
+  render() {
+    return (
+      <div>
+        <StyledFirebaseAuth
+          uiConfig={this.uiConfig}
+          firebaseAuth={this.props.auth}
+        />
+      </div>
+    );
+  }
 }
 
 export default SignIn;
-<div></div>;

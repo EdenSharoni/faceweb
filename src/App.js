@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import profileImage from "./img/picture.png";
 import "./App.css";
 import Home from "./components/Home";
