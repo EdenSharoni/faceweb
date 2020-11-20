@@ -35,18 +35,16 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <Router>
+    <div className="page_layout">
       <NavBar auth={auth} />
-      <div className="page_layout">
-        <section>
-          {user ? (
-            <Home auth={auth} />
-          ) : (
-            <SignIn firebase={firebase} auth={auth} />
-          )}
-        </section>
-      </div>
-    </Router>
+      <section>
+        {user ? (
+          <Home auth={auth} />
+        ) : (
+          <SignIn firebase={firebase} auth={auth} />
+        )}
+      </section>
+    </div>
   );
 }
 
