@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import { Redirect } from "react-router-dom";
 
 class SignIn extends Component {
-  state = { isSignedIn: false };
-
   uiConfig = {
     signInFlow: "popup",
     signInOptions: [
@@ -17,6 +16,8 @@ class SignIn extends Component {
   };
 
   render() {
+    console.log("SignIn Page");
+    if (this.props.auth.currentUser) return <Redirect push to="./home" />;
     return (
       <div className="SignIn_layout">
         <StyledFirebaseAuth

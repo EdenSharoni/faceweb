@@ -3,20 +3,19 @@ import React, { Component } from "react";
 class NavBar extends Component {
   state = {};
   render() {
-    const { auth } = this.props;
+    const { user, auth } = this.props;
     return (
       <div className="NavBar_layout">
-        <button class="button">
+        <button className="button">
           <span>About Author</span>
         </button>
-        <div className="vertical_line"></div>
-        {console.log(auth.currentUser)}
-        {auth.currentUser ? (
+        <hr />
+        {user ? (
           <div id="user">
-            <img src={auth.currentUser.photoURL} alt="not found" />
-            <p>{"Welcome: " + auth.currentUser.displayName}</p>
-            {auth.currentUser && (
-              <button class="button" onClick={() => auth.signOut()}>
+            <img src={user.photoURL} alt="not found" />
+            <p>{"Welcome: " + user.displayName}</p>
+            {user && (
+              <button className="button" onClick={() => auth.signOut()}>
                 <span> Sign Out</span>
               </button>
             )}

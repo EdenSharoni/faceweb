@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import NavBar from "./components/NavBar";
@@ -12,7 +13,7 @@ import "firebase/auth"; //import auth for our user authentication
 
 //hooks
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+//import { useCollectionData } from "react-firebase-hooks/firestore";
 
 //initialize our app
 if (!firebase.apps.length)
@@ -29,14 +30,36 @@ if (!firebase.apps.length)
 
 //reference to our auth and sdk as global variables
 const auth = firebase.auth();
-const firestore = firebase.firestore();
+//const firestore = firebase.firestore();
 
 function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="page_layout">
-      <NavBar auth={auth} />
+    <Router>
+      <NavBar user={user} auth={auth} />
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={(props) => <SignIn firebase={firebase} auth={auth} />}
+        />
+        <Route
+          exact
+          path="/home"
+          render={(props) =>
+            user ? <Home user={user} auth={auth} /> : <Redirect push to="./" />
+          }
+        />
+        <Route path="*" component={() => "404 NOT FOUND"} />
+      </Switch>
+    </Router>
+  );
+}
+
+/*
+   <div>
+    <NavBar auth={auth} />
       <section>
         {user ? (
           <Home auth={auth} />
@@ -45,7 +68,19 @@ function App() {
         )}
       </section>
     </div>
-  );
-}
+  */
+
+/*
+  <Router>
+      <NavBar auth={auth} />
+      <Switch>
+        <Route exact path="/" render={(props) => <Home auth={auth} />} />
+        <Route
+          path="/signIn"
+          render={(props) => <SignIn firebase={firebase} auth={auth} />}
+        />
+      </Switch>
+    </Router>
+  */
 
 export default App;

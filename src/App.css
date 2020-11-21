@@ -46,7 +46,7 @@ p {
   right: 0;
 }
 
-.vertical_line {
+hr {
   border-left: 3px solid black;
   display: inline;
 }
