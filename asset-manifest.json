@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/faceweb/static/css/main.16945840.chunk.css",
-    "main.js": "/faceweb/static/js/main.bd78b3bc.chunk.js",
-    "main.js.map": "/faceweb/static/js/main.bd78b3bc.chunk.js.map",
+    "main.js": "/faceweb/static/js/main.c3823ae4.chunk.js",
+    "main.js.map": "/faceweb/static/js/main.c3823ae4.chunk.js.map",
     "runtime-main.js": "/faceweb/static/js/runtime-main.99e4ba7b.js",
     "runtime-main.js.map": "/faceweb/static/js/runtime-main.99e4ba7b.js.map",
     "static/js/2.1526de73.chunk.js": "/faceweb/static/js/2.1526de73.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.99e4ba7b.js",
     "static/js/2.1526de73.chunk.js",
     "static/css/main.16945840.chunk.css",
-    "static/js/main.bd78b3bc.chunk.js"
+    "static/js/main.c3823ae4.chunk.js"
   ]
 }
