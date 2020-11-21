@@ -41,17 +41,17 @@ function App() {
       <Switch>
         <Route
           exact
-          path="/"
+          path="/faceweb/"
           render={(props) => <SignIn firebase={firebase} auth={auth} />}
         />
         <Route
           exact
-          path="/home"
+          path="/faceweb/home"
           render={(props) =>
             user ? <Home user={user} auth={auth} /> : <Redirect push to="./" />
           }
         />
-        <Route path="*" component={() => "404 NOT FOUND"} />
+        <Route path="/faceweb*" component={() => "404 NOT FOUND"} />
       </Switch>
     </Router>
   );

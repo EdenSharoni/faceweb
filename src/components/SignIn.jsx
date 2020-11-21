@@ -17,7 +17,8 @@ class SignIn extends Component {
 
   render() {
     console.log("SignIn Page");
-    if (this.props.auth.currentUser) return <Redirect push to="./home" />;
+    if (this.props.auth.currentUser)
+      return <Redirect push to="/faceweb/home" />;
     return (
       <div className="SignIn_layout">
         <StyledFirebaseAuth
