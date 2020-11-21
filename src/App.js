@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
@@ -41,17 +41,17 @@ function App() {
       <Switch>
         <Route
           exact
-          path="/faceweb/"
+          path="/"
           render={(props) => <SignIn firebase={firebase} auth={auth} />}
         />
         <Route
           exact
-          path="/faceweb/home"
+          path="/home"
           render={(props) =>
             user ? <Home user={user} auth={auth} /> : <Redirect push to="./" />
           }
         />
-        <Route path="/faceweb*" component={() => "404 NOT FOUND"} />
+        <Route path="*" component={() => "404 NOT FOUND"} />
       </Switch>
     </Router>
   );
