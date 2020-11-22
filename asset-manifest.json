@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/faceweb/static/css/main.16945840.chunk.css",
-    "main.js": "/faceweb/static/js/main.7138740b.chunk.js",
-    "main.js.map": "/faceweb/static/js/main.7138740b.chunk.js.map",
-    "runtime-main.js": "/faceweb/static/js/runtime-main.99e4ba7b.js",
-    "runtime-main.js.map": "/faceweb/static/js/runtime-main.99e4ba7b.js.map",
-    "static/js/2.1267afef.chunk.js": "/faceweb/static/js/2.1267afef.chunk.js",
-    "static/js/2.1267afef.chunk.js.map": "/faceweb/static/js/2.1267afef.chunk.js.map",
-    "static/js/3.9d62fc88.chunk.js": "/faceweb/static/js/3.9d62fc88.chunk.js",
-    "static/js/3.9d62fc88.chunk.js.map": "/faceweb/static/js/3.9d62fc88.chunk.js.map",
+    "main.js": "/faceweb/static/js/main.3424d4db.chunk.js",
+    "main.js.map": "/faceweb/static/js/main.3424d4db.chunk.js.map",
+    "runtime-main.js": "/faceweb/static/js/runtime-main.bafd7339.js",
+    "runtime-main.js.map": "/faceweb/static/js/runtime-main.bafd7339.js.map",
+    "static/js/2.8a955074.chunk.js": "/faceweb/static/js/2.8a955074.chunk.js",
+    "static/js/2.8a955074.chunk.js.map": "/faceweb/static/js/2.8a955074.chunk.js.map",
+    "static/js/3.2ee06ca3.chunk.js": "/faceweb/static/js/3.2ee06ca3.chunk.js",
+    "static/js/3.2ee06ca3.chunk.js.map": "/faceweb/static/js/3.2ee06ca3.chunk.js.map",
     "index.html": "/faceweb/index.html",
     "static/css/main.16945840.chunk.css.map": "/faceweb/static/css/main.16945840.chunk.css.map",
-    "static/js/2.1267afef.chunk.js.LICENSE.txt": "/faceweb/static/js/2.1267afef.chunk.js.LICENSE.txt"
+    "static/js/2.8a955074.chunk.js.LICENSE.txt": "/faceweb/static/js/2.8a955074.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.99e4ba7b.js",
-    "static/js/2.1267afef.chunk.js",
+    "static/js/runtime-main.bafd7339.js",
+    "static/js/2.8a955074.chunk.js",
     "static/css/main.16945840.chunk.css",
-    "static/js/main.7138740b.chunk.js"
+    "static/js/main.3424d4db.chunk.js"
   ]
 }
