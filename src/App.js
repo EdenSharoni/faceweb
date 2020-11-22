@@ -30,11 +30,13 @@ if (!firebase.apps.length)
 
 //reference to our auth and sdk as global variables
 const auth = firebase.auth();
-//const firestore = firebase.firestore();
+const firestore = firebase.firestore();
 
 function App() {
   const [user] = useAuthState(auth);
-
+  if (user) {
+    GetUserFromFirestore();
+  }
   return (
     <Router>
       <NavBar user={user} auth={auth} />
@@ -48,7 +50,7 @@ function App() {
           exact
           path="/home"
           render={(props) =>
-            user ? <Home user={user} auth={auth} /> : <Redirect push to="./" />
+            user ? <Home user={user} /> : <Redirect push to="./" />
           }
         />
         <Route path="*" component={() => "404 NOT FOUND"} />
@@ -57,30 +59,31 @@ function App() {
   );
 }
 
-/*
-   <div>
-    <NavBar auth={auth} />
-      <section>
-        {user ? (
-          <Home auth={auth} />
-        ) : (
-          <SignIn firebase={firebase} auth={auth} />
-        )}
-      </section>
-    </div>
-  */
+const GetUserFromFirestore = (e) => {
+  console.log("GetUserFromFirestore");
+  const { email, displayName, uid, photoURL } = auth.currentUser;
+  const usesrRef = firestore.collection("Users").doc(uid);
+  usesrRef.get().then((docSnapshot) => {
+    if (docSnapshot.exists) {
+      console.log("User Exists");
+      usesrRef.onSnapshot((doc) => {
+        // do stuff with the data
+      });
+    } else {
+      console.log("User does not exists");
+      UpdateUserInFirestore(uid, displayName, email, photoURL);
+    }
+  });
+};
 
-/*
-  <Router>
-      <NavBar auth={auth} />
-      <Switch>
-        <Route exact path="/" render={(props) => <Home auth={auth} />} />
-        <Route
-          path="/signIn"
-          render={(props) => <SignIn firebase={firebase} auth={auth} />}
-        />
-      </Switch>
-    </Router>
-  */
+const UpdateUserInFirestore = async (uid, displayName, email, photoURL) => {
+  console.log("UpdateUserInFirestore");
+  firestore.collection("Users").doc(uid).set({
+    uid,
+    displayName,
+    email,
+    photoURL,
+  });
+};
 
 export default App;

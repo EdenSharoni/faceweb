@@ -20,8 +20,12 @@ if (!firebase.apps.length)
 const auth = firebase.auth();
 //const firestore = firebase.firestore();
 class Firebase {
-  getAuth = () => {
-    return auth;
+  user = null;
+  getUser = () => {
+    return user;
+  };
+  updateUser = (user) => {
+    this.user = user;
   };
   getFirebase = () => {
     return firebase;
