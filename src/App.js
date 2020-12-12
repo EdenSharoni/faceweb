@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import NavBar from "./components/NavBar";
-
+import User from "./User";
 //firebase sdk
 import firebase from "firebase/app"; //import firebase sdk
 import "firebase/firestore"; //import firestore for our database
@@ -34,6 +34,7 @@ const firestore = firebase.firestore();
 
 function App() {
   const [user] = useAuthState(auth);
+
   if (user) {
     GetUserFromFirestore();
   }
@@ -43,14 +44,20 @@ function App() {
       <Switch>
         <Route
           exact
-          path="/"
-          render={(props) => <SignIn firebase={firebase} auth={auth} />}
+          path={["/", "/home"]}
+          render={(props) =>
+            user ? <Home user={user} /> : <Redirect push to="./login" />
+          }
         />
         <Route
           exact
-          path="/home"
+          path="/login"
           render={(props) =>
-            user ? <Home user={user} /> : <Redirect push to="./" />
+            user ? (
+              <Redirect push to="./" />
+            ) : (
+              <SignIn firebase={firebase} auth={auth} />
+            )
           }
         />
         <Route path="*" component={() => "404 NOT FOUND"} />
@@ -59,25 +66,23 @@ function App() {
   );
 }
 
-const GetUserFromFirestore = (e) => {
-  console.log("GetUserFromFirestore");
+const GetUserFromFirestore = () => {
+  console.log("GetUserFromFirestore: ", auth.currentUser);
   const { email, displayName, uid, photoURL } = auth.currentUser;
   const usesrRef = firestore.collection("Users").doc(uid);
   usesrRef.get().then((docSnapshot) => {
     if (docSnapshot.exists) {
       console.log("User Exists");
-      usesrRef.onSnapshot((doc) => {
-        // do stuff with the data
-      });
+      usesrRef.onSnapshot((doc) => {});
     } else {
       console.log("User does not exists");
-      UpdateUserInFirestore(uid, displayName, email, photoURL);
+      CreateNewUser(uid, displayName, email, photoURL);
     }
   });
 };
 
-const UpdateUserInFirestore = async (uid, displayName, email, photoURL) => {
-  console.log("UpdateUserInFirestore");
+const CreateNewUser = async (uid, displayName, email, photoURL) => {
+  console.log("CreateNewUser");
   firestore.collection("Users").doc(uid).set({
     uid,
     displayName,

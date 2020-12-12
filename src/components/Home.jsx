@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ModalLogin from "./modalLogin";
 
 class Home extends Component {
   state = {};
